@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Slide Rule</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<style type="text/css">
+		.step {
+		    width: 1000px;
+		    padding: 40px;
+
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing:    border-box;
+		    -ms-box-sizing:     border-box;
+		    -o-box-sizing:      border-box;
+		    box-sizing:         border-box;
+		}
+
+		.step {
+		    -webkit-transition: opacity 1s;
+		    -moz-transition:    opacity 1s;
+		    -ms-transition:     opacity 1s;
+		    -o-transition:      opacity 1s;
+		    transition:         opacity 1s;
+		}
+
+		.frame {
+		    height: 750px;
+		    overflow: visible;
+		}
+		.overflow {
+		    overflow:auto;
+		}
+		iframe {
+		    height: 3000px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div id="impress" class="impress-not-supported">
+		<div class="step" id="start" data-x="200" data-y="900" data-scale="3.2">
+		</div>
+		<div class="step" id="slide2" data-x="-1400" data-y="0">
+			<div style="width:500px;" class="frame">
+				<iframe frameborder="0" scrolling="no" width="480" src="#" name="imgbox">
+   				<p>iframes are not supported by your browser.</p>
+				</iframe>
+			</div>
+		</div>
+		<div class="step" id="slide3" data-x="-900" data-y="0">
+			<div style="width:620px;" class="frame">
+				<iframe frameborder="0" scrolling="no" width="600" src="#" name="imgbox">
+   				<p>iframes are not supported by your browser.</p>
+   				</iframe>
+   			</div>
+   		</div>
+		<div class="step" id="slide4" data-x="-250" data-y="0">
+			<div style="width:870px;" class="frame">
+				<iframe frameborder="0" scrolling="no" width="850" src="#" name="imgbox">
+   				<p>iframes are not supported by your browser.</p>
+   				</iframe>
+   			</div>
+   		</div>
+		<div class="step" id="slide5" data-x="650" data-y="0">
+			<div style="width:1020px;" class="frame">
+				<iframe frameborder="0" scrolling="no" width="1000" src="#" name="imgbox">
+   					<p>iframes are not supported by your browser.</p>
+				</iframe>
+			</div>
+		</div>
+		<div class="step" id="slide6" data-x="1825" data-y="0" style="width:1280px;">
+			<div style="width:1220px;" class="frame" >
+				<iframe frameborder="0" scrolling="no" width="1200" src="#" name="imgbox">
+   					<p>iframes are not supported by your browser.</p>
+				</iframe>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="impress.js"></script>
+	<script>impress().init();
+	$(document).ready(function() {
+
+		var site="http://happycog.com";
+
+		$('iframe').each(function () {
+			$(this).attr('src',site);
+		});
+
+        $(document).on('impress:stepenter', function(e) {
+            var currentSlide = $(e.target).attr('id');
+
+            if (currentSlide !== 'start') {
+                $('.frame').addClass('overflow');
+            } 
+            if (currentSlide === 'start') {
+                $('.frame').removeClass('overflow');
+            } 
+        });
+    });
+	</script>
+</body>
+</html>
